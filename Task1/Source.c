@@ -2,12 +2,12 @@
 #include <math.h>
 #include <malloc.h>
 
-double* InputData(int number) //функци€ ввода данных дл€ всех трех задач
+float* InputData(int number) //функци€ ввода данных дл€ всех трех задач
 {
-	double* inputDataArray = calloc(6, sizeof(double));
+	float* inputDataArray = calloc(6, sizeof(float));
 	if (number == 1)
 	{
-		double a, b, c;
+		float a, b, c;
 		printf("¬ведите коэффициенты a, b, c через пробел: ");
 		scanf_s("%f %f %f",&a,&b,&c);
 		inputDataArray[0] = a;
@@ -16,7 +16,7 @@ double* InputData(int number) //функци€ ввода данных дл€ всех трех задач
 	}
 	else if (number == 2)
 	{
-		double a1, b1, c1, a2, b2, c2;
+		float a1, b1, c1, a2, b2, c2;
 		printf("¬ведите коэффициенты a1, b1, c1 через пробел: ");
 		scanf_s("%f %f %f", &a1, &b1, &c1);
 		printf("¬ведите коэффициенты a2, b2, c2 через пробел: ");
@@ -30,7 +30,7 @@ double* InputData(int number) //функци€ ввода данных дл€ всех трех задач
 	}
 	else if (number == 3)
 	{
-		double n;
+		float n;
 		printf("¬ведите значение n: ");
 		scanf_s("%f", &n);
 		inputDataArray[0] = n;
@@ -38,7 +38,7 @@ double* InputData(int number) //функци€ ввода данных дл€ всех трех задач
 	return inputDataArray;
 }
 
-void ShowResult(double* outputDataArray, int number) //вывод данных дл€ всех трех задач
+void ShowResult(float* outputDataArray, int number) //вывод данных дл€ всех трех задач
 {
 	if (number == 1)
 	{
@@ -56,13 +56,13 @@ void ShowResult(double* outputDataArray, int number) //вывод данных дл€ всех тре
 
 void StartTask1(int number) //запуск первой задачи (квадратное уравнение)
 {
-	double* inputDataArray = InputData(number);
-	double discriminant = (inputDataArray[1] * inputDataArray[1]) - (4 * inputDataArray[0] * inputDataArray[2]);
+	float* inputDataArray = InputData(number);
+	float discriminant = (inputDataArray[1] * inputDataArray[1]) - (4 * inputDataArray[0] * inputDataArray[2]);
 	if (discriminant > 0 || discriminant == 0)
 	{
-		double x1 = ((-1 * inputDataArray[1]) + sqrt(discriminant)) / (2 * inputDataArray[0]);
-		double x2 = ((-1 * inputDataArray[1]) - sqrt(discriminant)) / (2 * inputDataArray[0]);
-		double* answerArray = calloc(2, sizeof(double));
+		float x1 = ((-1 * inputDataArray[1]) + sqrt(discriminant)) / (2 * inputDataArray[0]);
+		float x2 = ((-1 * inputDataArray[1]) - sqrt(discriminant)) / (2 * inputDataArray[0]);
+		float* answerArray = calloc(2, sizeof(float));
 		answerArray[0] = x1;
 		answerArray[1] = x2;
 		ShowResult(answerArray, number);
@@ -72,10 +72,10 @@ void StartTask1(int number) //запуск первой задачи (квадратное уравнение)
 
 void StartTask2(int number) //запуск второй задачи (система двух линейных уравнений)
 {
-	double* inputDataArray = InputData(number);
-	double x = (inputDataArray[2] * inputDataArray[4] - inputDataArray[1] * inputDataArray[5]) / (inputDataArray[0] * inputDataArray[4] - inputDataArray[1] * inputDataArray[3]);
-	double y = (inputDataArray[0] * inputDataArray[5] - inputDataArray[3] * inputDataArray[2]) / (inputDataArray[0] * inputDataArray[4] - inputDataArray[1] * inputDataArray[3]);
-	double* answerArray = calloc(2, sizeof(double));
+	float* inputDataArray = InputData(number);
+	float x = (inputDataArray[2] * inputDataArray[4] - inputDataArray[1] * inputDataArray[5]) / (inputDataArray[0] * inputDataArray[4] - inputDataArray[1] * inputDataArray[3]);
+	float y = (inputDataArray[0] * inputDataArray[5] - inputDataArray[3] * inputDataArray[2]) / (inputDataArray[0] * inputDataArray[4] - inputDataArray[1] * inputDataArray[3]);
+	float* answerArray = calloc(2, sizeof(float));
 	answerArray[0] = x;
 	answerArray[1] = y;
 	ShowResult(answerArray,number);
@@ -83,13 +83,13 @@ void StartTask2(int number) //запуск второй задачи (система двух линейных уравне
 
 void StartTask3(int number) //запуск третьей задачи (перестановки)
 {
-	double* inputDataArray = InputData(number);
-	double answer = 1;
-	for (int i = 1; i < inputDataArray[0]; i++)
+	float* inputDataArray = InputData(number);
+	float answer = 1;
+	for (int i = 1; i <= inputDataArray[0]; i++)
 	{
 		answer *= i;
 	}
-	double* answerArray = calloc(1, sizeof(double));
+	float* answerArray = calloc(1, sizeof(float));
 	answerArray[0] = answer;
 	ShowResult(answerArray, number);
 }
